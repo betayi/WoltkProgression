@@ -35,5 +35,5 @@ INSERT INTO `areatrigger_scripts` (`entry`, `ScriptName`) VALUES (4156, 'at_sapp
 UPDATE `spell_target_position` SET `PositionX`=3500.87, `PositionY`=-5339.03, `PositionZ`=145, `Orientation`=1.34 WHERE `ID`=72613 AND `EffectIndex`=0;
 
 -- 5 = Change phaseMask for gameobejct "Portal"
-UPDATE `gameobject` SET `phaseMask`=2 WHERE  `guid`=65853;
+UPDATE `gameobject` SET `phaseMask`=2 WHERE  `guid`=5216;
 
