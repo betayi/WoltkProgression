@@ -65,7 +65,7 @@ UPDATE `quest_template` SET `RewardItem1`=@NewLowerEmblem WHERE `ID`=24789;
 -- = = = = = = = = =
 
 -- Hide Emalon, Koralon and Toravon at Vaulth of Archavon
-UPDATE `creature` SET `phaseMask` = 2 WHERE `id` IN (
+UPDATE `creature` SET `phaseMask` = 2 WHERE `id1` IN (
 33993, -- Emalon
 35013, -- Koralon
 38433); -- Toravon
@@ -106,6 +106,8 @@ UPDATE `creature_loot_template` SET `Item`=@NewLowerEmblem WHERE `Entry`=31370 A
 UPDATE `creature_loot_template` SET `Item`=@NewLowerEmblem WHERE `Entry`=31367 AND `Item`=@OldEmblem;
 -- Eck the Ferocious: 29932
 UPDATE `creature_loot_template` SET `Item`=@NewLowerEmblem WHERE `Entry`=29932 AND `Item`=@OldEmblem;
+-- The Prophet Tharon'ja 31360
+UPDATE `creature_loot_template` SET `Item`=@NewLowerEmblem WHERE `Entry`=31360 AND `Item`=@OldEmblem;
 --  - - - - - - - - Halls of Lightning - - - - - - - -
 -- General Bjarngrim: 31533
 UPDATE `creature_loot_template` SET `Item`=@NewLowerEmblem WHERE `Entry`=31533 AND `Item`=@OldEmblem;
@@ -350,7 +352,7 @@ UPDATE `creature` SET `phaseMask` = 2 WHERE `id` IN (
 34075, 34084, 34078); -- Alliance
 
 -- Place TBC matts (for +16 gems) into jewelry vendors in the pvp vendors area at orgrimmar and stormwind
-DELETE FROM `npc_vendor` WHERE `entry`=34040 AND item IN (36918, 36921, 36924, 36927, 36930, 36933);
+DELETE FROM `npc_vendor` WHERE `entry`=34040 AND item IN (36919, 36922, 36925, 36928, 36931, 36934);
 INSERT INTO `npc_vendor` (`entry`, `slot`, `item`, `maxcount`, `incrtime`, `ExtendedCost`, `VerifiedBuild`) VALUES 
 (34040, 0, 36918, 0, 0, 2588, 0),
 (34040, 0, 36921, 0, 0, 2588, 0),
@@ -464,7 +466,7 @@ INSERT INTO `creature_questender` (`id`, `quest`) VALUES
 (31439, 13244);
 
 /* Proof of Demise - Archmage Lan'dalock in Dalaran */
-DELETE FROM `creature_queststarter` WHERE `id`=31439;
+DELETE FROM `creature_queststarter` WHERE `id`=20735 AND (`quest` BETWEEN 13245 AND 13256);
 INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES 
 (20735, 13245),
 (20735, 13247),
@@ -478,7 +480,7 @@ INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES
 (20735, 13252),
 (20735, 13254),
 (20735, 13256);
-DELETE FROM `creature_questender` WHERE `id`=31439;
+DELETE FROM `creature_questender` WHERE `id`=20735 AND (`quest` BETWEEN 13245 AND 13256);
 INSERT INTO `creature_questender` (`id`, `quest`) VALUES 
 (20735, 13245),
 (20735, 13247),
@@ -515,10 +517,10 @@ AND `Item`=49426; -- emblem of frost (assuming you are applying this to a clean 
 -- = Miscellaneous =
 -- = = = = = = = = =
 
--- Cardinal Ruby
+-- Cardinal Ruby --Patch 3.3
 update quest_template SET minlevel=90 WHERE id IN (14151);
 
--- Assault on the Sanctum
+-- Assault on the Sanctum --Patch 3.3
 update quest_template SET minlevel=90 WHERE id IN (26013);
 
 -- Usuri Brightcoin <Money Changer>
@@ -534,10 +536,10 @@ delete FROM npc_trainer WHERE spellid IN (67920);
 delete FROM npc_trainer WHERE spellid IN (69385);
 
 -- Icy Prism - (ReferenceTable)
-DELETE FROM item_loot_template item_loot_template WHERE entry=44943 and reference =10008;
+DELETE FROM item_loot_template WHERE entry=44943 and reference =10008;
 
 -- Icy Prism - Dragon's Eye
-DELETE FROM item_loot_template item_loot_template WHERE entry=44943 and item =42225;
+DELETE FROM item_loot_template WHERE entry=44943 and item =42225;
 
 -- (ReferenceTable) - Titanium Ore
 DELETE FROM prospecting_loot_template WHERE reference=13005;
