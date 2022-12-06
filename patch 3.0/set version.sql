@@ -70,6 +70,9 @@ UPDATE `creature` SET `phaseMask` = 2 WHERE `id1` IN (
 35013, -- Koralon
 38433); -- Toravon
 
+-- Naxx , Change phaseMask for gameobejct "Portal"
+UPDATE `gameobject` SET `phaseMask`=2 WHERE  `guid`=5216;
+
 -- - - - - - - - - Ahn kahet: The Old Kingdom - - - - - - - -
 -- Amanitar: 31463
 UPDATE `creature_loot_template` SET `Item`=@NewLowerEmblem WHERE `Entry`=31463 AND `Item`=@OldEmblem;
@@ -579,4 +582,3 @@ delete FROM npc_vendor  WHERE item = 50369;
 
 -- Arcanum of Torment | Added in patch 3.3.0.10623
 delete from npc_vendor where item=50367;
-
